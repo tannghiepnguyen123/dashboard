@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import LanguageIcon from "@mui/icons-material/Language";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
@@ -7,8 +7,10 @@ import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
 import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
 import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
 import "./navbar.scss";
+import { DarkModeContext } from "../../context/darkModeContext";
 
 const Navbar = () => {
+  const { dispatch } = useContext(DarkModeContext);
   return (
     <div className="navbar">
       <div className="wrapper">
@@ -21,7 +23,7 @@ const Navbar = () => {
             <LanguageIcon className="icon" />
             English
           </div>
-          <div className="item">
+          <div className="item" onClick={() => dispatch({ type: "TOGGLE" })}>
             <DarkModeIcon className="icon" />
           </div>
           <div className="item">
